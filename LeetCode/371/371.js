@@ -60,10 +60,22 @@ var getSum = function(a, b) {
 };
 
 /*
-* 思路二：位运算符
+* 思路二：位运算符,https://www.cnblogs.com/luckylihuizhou/p/6349704.html
 * */
 
-var getSum = function(a, b) {};
+var getSum = function(a, b) {
+  return (a ^ b) + ((a & b) << 1);
+};
+/*
+* 不用加法
+* * */
+var getSum = function(a, b) {
+  if (b === 0) return a;
+  let sum, carry;
+  sum = a ^ b;
+  carry = (a & b) << 1;
+  return getSum(sum, carry);
+};
 
-console.log(getSum(-1, 1));
+console.log(getSum(18, 1));
 //[5]
