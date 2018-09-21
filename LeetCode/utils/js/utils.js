@@ -14,27 +14,40 @@ const changeListNode = value => {
   return getList(0);
 };
 
-
 function TreeNode(val) {
   this.val = val;
   this.left = this.right = null;
 }
 
 // 将给到的数组转变成链表TreeNode格式
-// 有错，待修改
 const changeTreeNode = value => {
-  const getTree = (i, depth) => {
-    if (value[i] === null) return null;
-    if (i > value.length - 1) return null;
-    const head = new TreeNode(value[i]);
-    head.left = getTree(2 * i + 1, depth + 1);
-    head.right = getTree(2 * i + 2, depth + 1);
+  // 做树
+  const getTree = (data, i, depth) => {
+    if (data[i] === null) return null;
+    if (i > data.length - 1) return null;
+    const head = new TreeNode(data[i]);
+    head.left = getTree(data, 2 * i + 1, depth + 1);
+    head.right = getTree(data, 2 * i + 2, depth + 1);
     return head;
   };
-  const ans = getTree(0, 1);
+  // 扩充数组，增加[0, 3, 1, 4, null, 2, null, null, 6, null, 5]的数据输出
+  const insertArray = arr => {
+    const data = [...arr];
+    arr.forEach((i, index) => {
+      if (i === null) {
+        data.splice(2 * index + 1, 0, null);
+        data.splice(2 * index + 2, 0, null);
+      }
+    });
+    return data;
+  };
+  const ans = getTree(insertArray(value), 0, 1);
   return ans;
-  // return getTree(0,1);
 };
-console.log('changeTreeNode([0,3,1,4,null,2,null,null,6,null,5])',changeTreeNode([0,3,1,4,null,2,null,null,6,null,5]))
 
+// console.log(
+//   "changeTreeNode([0,3,1,4,null,2,null,null,6,null,5])",
+//   changeTreeNode([0, 3, 1, 4, null, 2, null, null, 6, null, 5])
+//   // changeTreeNode([0,1,3,null,2])
+// );
 module.exports = { changeListNode, ListNode, TreeNode, changeTreeNode };
