@@ -38,4 +38,18 @@ var postorderTraversal2 = function(root) {
   };
   return traversalData(root, []);
 };
-console.log(postorderTraversal2(makeTreeNode(["A", "B", "C", "D", "E", "F"])));
+
+/*
+* 迭代？
+* */
+var postorderTraversal3 = function(root) {
+  const traversalData = (val, ans = []) => {
+    if (val === null) return ans;
+    traversalData(val.left, ans);
+    traversalData(val.right, ans);
+    ans.push(val.val);
+    return ans;
+  };
+  return traversalData(root, []);
+};
+console.log(postorderTraversal3(makeTreeNode(["A", "B", "C", "D", "E", "F"])));
