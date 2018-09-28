@@ -9,7 +9,7 @@ function ListNode(val) {
  * @param {ListNode} l2
  * @return {ListNode}
  */
-const { changeListNode } = require("../utils/js/utils.js");
+const { makeListNode } = require("../utils/js/utils.js");
 /*
 * 思路一：暴力解法，正常加法后重新转换listnode,涉及数字精度问题，（解法错误）
 * */
@@ -95,6 +95,6 @@ var addTwoNumbers2 = function(l1, l2) {
 };
 
 console.log(
-  addTwoNumbers2(changeListNode([2, 5, 1, 3, 5]), changeListNode([4, 6, 9]))
+  addTwoNumbers2(makeListNode([2, 5, 1, 3, 5]), makeListNode([4, 6, 9]))
 );
 //[5]

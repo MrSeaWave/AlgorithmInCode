@@ -9,7 +9,7 @@
  * @param {TreeNode} root
  * @return {TreeNode}
  */
-const { changeTreeNode, TreeNode } = require("../utils/js/utils");
+const { makeTreeNode, TreeNode } = require("../utils/js/utils");
 /*
 * 暴力枚举
 * */
@@ -33,7 +33,7 @@ var subtreeWithAllDeepest = function(root) {
 console.log(
   "subtreeWithAllDeepest",
   subtreeWithAllDeepest(
-    changeTreeNode([0, 3, 1, 4, null, 2, null, null, 6, null, 5])
+    makeTreeNode([0, 3, 1, 4, null, 2, null, null, 6, null, 5])
   )
 );
 // [0,1,3,null,2] --> [2]

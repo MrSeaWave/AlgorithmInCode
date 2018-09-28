@@ -5,7 +5,7 @@
  *     this.next = null;
  * }
  */
-const {changeListNode,ListNode} =require("../utils/js/utils")
+const {makeListNode,ListNode} =require("../utils/js/utils")
 
 
 /**
@@ -40,4 +40,4 @@ var mergeTwoLists = function(l1, l2) {
     return head.next;
 };
 
-console.log(mergeTwoLists(changeListNode([1,2,4]),changeListNode([1,3,4])))
+console.log(mergeTwoLists(makeListNode([1,2,4]),makeListNode([1,3,4])))

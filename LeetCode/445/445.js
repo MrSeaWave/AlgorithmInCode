@@ -9,7 +9,7 @@ function ListNode(val) {
  * @param {ListNode} l2
  * @return {ListNode}
  */
-const { changeListNode } = require("../utils/js/utils.js");
+const { makeListNode } = require("../utils/js/utils.js");
 /*
 * 思路一：反转链表，之后用第二题的解题思路进行操作
 * */
@@ -56,6 +56,6 @@ var addTwoNumbers = function(l1, l2) {
 var addTwoNumbers2 = function(l1, l2) {};
 
 console.log(
-  addTwoNumbers2(changeListNode([7, 2, 4, 3]), changeListNode([5, 6, 4]))
+  addTwoNumbers2(makeListNode([7, 2, 4, 3]), makeListNode([5, 6, 4]))
 );
 //[5]

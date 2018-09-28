@@ -4,7 +4,7 @@ function ListNode(val) {
   this.next = null;
 }
 // 将给到的数组转变成链表ListNode格式
-const changeListNode = value => {
+const makeListNode = value => {
   const getList = i => {
     if (i > value.length - 1) return null;
     const head = new ListNode(value[i]);
@@ -20,7 +20,7 @@ function TreeNode(val) {
 }
 
 // 将给到的数组转变成链表TreeNode格式
-const changeTreeNode = value => {
+const makeTreeNode = value => {
   // 做树
   const getTree = (data, i, depth) => {
     if (data[i] === null) return null;
@@ -46,8 +46,8 @@ const changeTreeNode = value => {
 };
 
 // console.log(
-//   "changeTreeNode([0,3,1,4,null,2,null,null,6,null,5])",
-//   changeTreeNode([0, 3, 1, 4, null, 2, null, null, 6, null, 5])
-//   // changeTreeNode([0,1,3,null,2])
+//   "makeTreeNode([0,3,1,4,null,2,null,null,6,null,5])",
+//   makeTreeNode([0, 3, 1, 4, null, 2, null, null, 6, null, 5])
+//   // makeTreeNode([0,1,3,null,2])
 // );
-module.exports = { changeListNode, ListNode, TreeNode, changeTreeNode };
+module.exports = { makeListNode, ListNode, TreeNode, makeTreeNode };
