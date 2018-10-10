@@ -5,6 +5,7 @@
 /*
 * 思路一：纯模拟，比较点距左边与右边有符号的长度大小
 * */
+
 var pushDominoes = function(dominoes) {
   const ans = dominoes.split("");
   for (let i = 0; i < dominoes.length; i++) {
@@ -36,6 +37,10 @@ var pushDominoes = function(dominoes) {
   return ans.join("");
 };
 
+
+/*
+* 思路二：优化上述模拟过程
+* */
 // console.log(pushDominoes(".R........"));
 // console.log(pushDominoes(".L.R...LR..L.."));
 // console.log(pushDominoes(".R..L."));
