@@ -24,9 +24,9 @@
 const {  TreeNode } = require('../utils/js/utils');
 
 var buildTree = function(inorder, postorder) {
-  if(inorder.length===0) return null
+  if(inorder.length===0) return null// 这句判断语句在中文很迷，有时候能通过，有时候死活过不去 [] [] return null 反解析后变成[]
   const recursiveFun=(inData,inStart,inEnd,postData,postStart,postEnd)=>{
-    if(inStart>inEnd||postEnd>postEnd) return null
+    if(inStart>inEnd||postStart>postEnd) return null
     const treeNode=new TreeNode(postData[postEnd])
     for(let i=inStart;i<=inEnd;i++){
       if(inData[i]===postData[postEnd]){
