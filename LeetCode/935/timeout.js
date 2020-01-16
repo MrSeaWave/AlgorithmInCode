@@ -2,7 +2,7 @@
  * @param {number} N
  * @return {number}
  */
-// 暂时有问题，待修改
+// 暴力枚举 (超时)
 var knightDialer = function(N) {
   // 构建4*3的棋盘
   const keypad = [[1, 1, 1], [1, 1, 1], [1, 1, 1], [0, 1, 0]];
@@ -19,15 +19,12 @@ var knightDialer = function(N) {
     // 棋盘不能立足
     if (!keypad[x][y]) return false;
     // 拔出当前的坐标，剩余的步数
-    console.log('x,y,rn',x,y,rn)
     if (!rn) {
       result++;
       return true;
-      console.groupEnd('棋盘')
     }
     const nextKeypad = keypad.map(item => [...item]);
-    nextKeypad[x][y] = 0;
-    console.group('棋盘')
+    // nextKeypad[x][y] = 0;
     // 左上
     search(nextKeypad, [x - 2, y - 1], rn - 1);
     // 左上上
@@ -54,6 +51,6 @@ var knightDialer = function(N) {
 };
 
 console.log('knightDialer', knightDialer(3));
-// const input = [1, 2, 3];
-// const output = [10, 20, 46];
-// input.forEach(n => console.log(knightDialer(n)));
+const input = [1, 2, 3];
+const output = [10, 20, 46];
+input.forEach(n => console.log(knightDialer(n)));
