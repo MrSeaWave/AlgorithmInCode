@@ -2,13 +2,16 @@
  * @param {number} N
  * @return {number}
  */
-// 小优化，但还是解错，想要获取同一个x,y,n下的x，y,n-1的数据
+// 小优化1，不是最优解
+// TODO 再次优化可以想要获取同一个x,y,n下的x，y,n-1的数据
 var knightDialer = function(N) {
   // 构建4*3的棋盘
   const keypad = [[1, 1, 1], [1, 1, 1], [1, 1, 1], [0, 1, 0]];
   let result = 0;
   // x-y-n 的记忆数据
   const memo = {};
+  // 按题中意思需要取模
+  const mod = Math.pow(10, 9) + 7;
   /**
    * keypad : 上一次的棋盘
    * coordinates:当前坐标
@@ -44,19 +47,19 @@ var knightDialer = function(N) {
     const s7 = search(nextKeypad, [x - 1, y + 2], rn - 1);
     // 右上上
     const s8 = search(nextKeypad, [x - 2, y + 1], rn - 1);
-    const sum = s1 + s2 + s3 + s4 + s5 + s6 + s7 + s8;
+    const sum = (s1 + s2 + s3 + s4 + s5 + s6 + s7 + s8) % mod;
     memo[`${x}-${y}-${rn}`] = sum;
     return sum;
   };
   keypad.forEach((item, x) => {
     item.forEach((i, y) => {
-      result += search(keypad, [x, y], N - 1);
+      result = (result + search(keypad, [x, y], N - 1)) % mod;
     });
   });
   return result;
 };
 
 console.log('knightDialer', knightDialer(161));
-const input = [1, 2, 3];
-const output = [10, 20, 46];
+const input = [1, 2, 3, 161, 3203];
+const output = [10, 20, 46, 533302150, 6332575];
 input.forEach(n => console.log(knightDialer(n)));
