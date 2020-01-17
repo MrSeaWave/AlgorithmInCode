@@ -4,7 +4,7 @@
  */
 // 小优化1，不是最优解
 // TODO 再次优化可以想要获取同一个x,y,n下的x，y,n-1的数据
-var knightDialer = function(N) {
+var knightDialer1 = function(N) {
   // 构建4*3的棋盘
   const keypad = [[1, 1, 1], [1, 1, 1], [1, 1, 1], [0, 1, 0]];
   let result = 0;
@@ -59,6 +59,45 @@ var knightDialer = function(N) {
   return result;
 };
 
+// 延续上个思路，创建号码节点
+var knightDialer = function(N) {
+  // 提前创建号码节点跳数关系
+  const nodes = {
+    0: [4, 6],
+    1: [6, 8],
+    2: [7, 9],
+    3: [4, 8],
+    4: [3, 9, 0],
+    5: [],
+    6: [1, 7, 0],
+    7: [2, 6],
+    8: [1, 3],
+    9: [2, 4]
+  };
+  // 号码数
+  const nums = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  // 模
+  const mod = Math.pow(10, 9) + 7;
+  // 记忆化 num-n
+  const memo = {};
+  const getMod = s => s % mod;
+  // num 当前号码数, rn:剩余步数
+  const search = (num, rn) => {
+    if (memo[`${num}-${rn}`]) return memo[`${num}-${rn}`];
+    if (!rn) return 1;
+    let sum = 0;
+    nodes[num].forEach(node => {
+      sum = getMod(sum + search(node, rn - 1));
+    });
+    memo[`${num}-${rn}`] = sum;
+    return sum;
+  };
+  let result = 0;
+  nums.forEach(num => {
+    result = getMod(result + search(num, N - 1));
+  });
+  return result;
+};
 console.log('knightDialer', knightDialer(161));
 const input = [1, 2, 3, 161, 3203];
 const output = [10, 20, 46, 533302150, 6332575];
