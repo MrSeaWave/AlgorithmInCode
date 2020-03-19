@@ -29,7 +29,6 @@ let reverseList1 = head => {
   let pre = null,
     cur = head;
   while (cur) {
-    console.log('cur',cur,pre)
     // 保存下一个节点的值
     let next = cur.next;
     cur.next = pre;
