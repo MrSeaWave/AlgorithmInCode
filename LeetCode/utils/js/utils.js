@@ -14,6 +14,16 @@ const makeListNode = value => {
   return getList(0);
 };
 
+/**
+ * @desc 将listNode节点解析成数组
+ * @param {ListNode} node - ListNode
+ * */
+
+const parseListNodeToArray = node => {
+  if (!node.next) return [node.val];
+  return [node.val, ...parseListNodeToArray(node.next)];
+};
+
 function TreeNode(val) {
   this.val = val;
   this.left = this.right = null;
@@ -50,4 +60,4 @@ const makeTreeNode = value => {
 //   makeTreeNode([0, 3, 1, 4, null, 2, null, null, 6, null, 5])
 //   // makeTreeNode([0,1,3,null,2])
 // );
-module.exports = { makeListNode, ListNode, TreeNode, makeTreeNode };
+module.exports = { makeListNode, ListNode, TreeNode, makeTreeNode, parseListNodeToArray };
