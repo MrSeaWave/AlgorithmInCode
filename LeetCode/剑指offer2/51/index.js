@@ -36,17 +36,24 @@ var reversePairs = function (nums) {
     return leftPairs + rightParis + crossPairs;
   }
 
-  // nums[left..mid] 有序，nums[mid + 1..right] 有序
+  // nums[left..mid] 有序，nums[mid + 1..right] 有序，，，合并与逆序对统计
   function mergeAndCount(nums, temp, left, mid, right) {
-    // 拷贝至辅助数组中
+    // 暂存数组 nums 闭区间 [i, r]内的元素至辅助数组 temp ；
     for (let i = left; i <= right; i++) {
       temp[i] = nums[i];
     }
 
+    // 循环合并： 设置双指针 i , j 分别指向左 / 右子数组的首元素；
     let i = left;
     let j = mid + 1;
 
     let count = 0;
+
+    // 当 i = m + 1 时： 代表左子数组已合并完，因此添加右子数组当前元素 temp[j] ，并执行 j = j + 1；
+    // 否则，当 j = r + 1 时： 代表右子数组已合并完，因此添加左子数组当前元素 temp[i] ，并执行 i = i + 1；
+    // 否则，当 temp[i] <=temp[j]时： 添加左子数组当前元素 temp[i] ，并执行 i = i + 1；
+    // 否则（即 temp[i] > temp[j]）时： 添加右子数组当前元素 temp[j]，并执行 j = j + 1 ；此时构成 m - i + 1个「逆序对」，统计添加至 count ；
+
     for (let k = left; k <= right; k++) {
       if (i === mid + 1) {
         nums[k] = temp[j];
