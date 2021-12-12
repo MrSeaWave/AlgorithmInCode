@@ -24,9 +24,10 @@ const parseListNodeToArray = node => {
   return [node.val, ...parseListNodeToArray(node.next)];
 };
 
-function TreeNode(val) {
-  this.val = val;
-  this.left = this.right = null;
+function TreeNode(val, left, right) {
+  this.val = val === undefined ? 0 : val;
+  this.left = left === undefined ? null : left;
+  this.right = right === undefined ? null : right;
 }
 
 // 将给到的数组转变成链表TreeNode格式
