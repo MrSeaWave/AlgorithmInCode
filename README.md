@@ -10,6 +10,7 @@
 - [50. Pow(x, n)](https://leetcode-cn.com/problems/powx-n/)
 - [69. x 的平方根](https://leetcode-cn.com/problems/sqrtx/)
 - [704. 二分查找](https://leetcode-cn.com/problems/binary-search/)
+- [34. 在排序数组中查找元素的第一个和最后一个位置](https://leetcode-cn.com/problems/find-first-and-last-position-of-element-in-sorted-array/)
 
 ## 查找表 [⭐️](https://leetcode-cn.com/problem-list/KYFPLOXw)
 
