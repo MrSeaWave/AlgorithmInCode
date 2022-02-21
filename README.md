@@ -31,6 +31,7 @@
 - [203. 移除链表元素](https://leetcode-cn.com/problems/remove-linked-list-elements/)
 - [2. 两数相加](https://leetcode-cn.com/problems/add-two-numbers/)
 - [24. 两两交换链表中的节点](https://leetcode-cn.com/problems/swap-nodes-in-pairs/)
+- [25. K 个一组翻转链表](https://leetcode-cn.com/problems/reverse-nodes-in-k-group/)
 - [剑指 Offer 22. 链表中倒数第 k 个节点](https://leetcode-cn.com/problems/lian-biao-zhong-dao-shu-di-kge-jie-dian-lcof/)
 - [19. 删除链表的倒数第 N 个结点](https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/)
 - [206. 反转链表](https://leetcode-cn.com/problems/reverse-linked-list/)
