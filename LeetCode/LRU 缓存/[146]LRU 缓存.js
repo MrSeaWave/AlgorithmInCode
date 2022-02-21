@@ -96,6 +96,39 @@
 //   }
 // };
 
+// 直接使用map方法当做缓存，且可以有顺序
+// https://juejin.cn/post/7065183597254148104
+class LRUCache_1 {
+  constructor(capacity) {
+    this.cache = new Map();
+    this.max = capacity;
+  }
+  get(key) {
+    if (this.cache.has(key)) {
+      let value = this.cache.get(key);
+      this.cache.delete(key);
+      this.cache.set(key, value);
+      return value;
+    } else {
+      return -1;
+    }
+  }
+
+  put(key, value) {
+    if (this.cache.has(key)) {
+      this.cache.delete(key);
+    }
+    this.cache.set(key, value);
+
+    if (this.cache.size > this.max) {
+      // 取出第一个插入的数据
+      // https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Map/keys
+      this.cache.delete(this.cache.keys().next().value);
+    }
+  }
+}
+
+// O(1) 解法双向链表
 class LRUNode {
   constructor(key, val) {
     this.key = key;
