@@ -49,20 +49,20 @@ var findAnagrams = function (s, p) {
   }
   let hash = {};
   // 当前滑动的窗口
-  let slide = {};
+  let slider = {};
   for (let i = 0; i < pLen; i++) {
     hash[p[i]] = (hash[p[i]] || 0) + 1;
-    slide[s[i]] = (slide[s[i]] || 0) + 1;
+    slider[s[i]] = (slider[s[i]] || 0) + 1;
   }
   let ans = [];
-  if (isAnagram(slide, hash)) {
+  if (isAnagram(slider, hash)) {
     ans.push(0);
   }
   for (let i = p.length; i < s.length; i++) {
     // 把滑动出去的 字母 所对应的数量 -1 即可，移入的 +1。
-    slide[s[i]] = (slide[s[i]] || 0) + 1;
-    slide[s[i - pLen]] = slide[s[i - pLen]] - 1;
-    if (isAnagram(slide, hash)) {
+    slider[s[i]] = (slider[s[i]] || 0) + 1;
+    slider[s[i - pLen]] = slider[s[i - pLen]] - 1;
+    if (isAnagram(slider, hash)) {
       ans.push(i - pLen + 1);
     }
   }
@@ -70,8 +70,8 @@ var findAnagrams = function (s, p) {
 };
 
 // 判断窗口是否是p的异味
-function isAnagram(slide, hash) {
-  return !Object.entries(slide).filter(([key, val]) => {
+function isAnagram(slider, hash) {
+  return !Object.entries(slider).filter(([key, val]) => {
     return val !== 0 && val !== hash[key];
   }).length;
 }
