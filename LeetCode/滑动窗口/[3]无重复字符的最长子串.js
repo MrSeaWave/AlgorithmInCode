@@ -71,3 +71,19 @@ var lengthOfLongestSubstring = function (s) {
 };
 //leetcode submit region end(Prohibit modification and deletion)
 // console.log('lengthOfLongestSubstring', lengthOfLongestSubstring('pwwkew'));
+
+// 简化版本
+var lengthOfLongestSubstring_1 = function(s) {
+  let maxLength = 0;
+  let slider = [];
+  for (let i = 0; i < s.length; i++) {
+    let cur = s[i];
+    let index = slider.indexOf(cur);
+    slider = slider.slice(index + 1);
+    slider.push(cur);
+    if (slider.length > maxLength) {
+      maxLength = slider.length;
+    }
+  }
+  return maxLength;
+};
