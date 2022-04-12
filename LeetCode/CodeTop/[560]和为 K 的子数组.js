@@ -1,4 +1,4 @@
-//给你一个整数数组 nums 和一个整数 k ，请你统计并返回该数组中和为 k 的连续子数组的个数。
+//给你一个整数数组 nums 和一个整数 k ，请你统计并返回 该数组中和为 k 的子数组的个数 。
 //
 //
 //
@@ -25,7 +25,7 @@
 // -1000 <= nums[i] <= 1000
 // -10⁷ <= k <= 10⁷
 //
-// Related Topics 数组 哈希表 前缀和 👍 1324 👎 0
+// Related Topics 数组 哈希表 前缀和 👍 1419 👎 0
 
 //leetcode submit region begin(Prohibit modification and deletion)
 /**
@@ -33,21 +33,14 @@
  * @param {number} k
  * @return {number}
  */
-// 参考 https://leetcode-cn.com/problems/subarray-sum-equals-k/solution/dai-ni-da-tong-qian-zhui-he-cong-zui-ben-fang-fa-y/
-var subarraySum = function (nums, k) {
-  // nums 的 第 i 到 j 项 的和，有：
-  // nums[i]+…+nums[j]=prefixSum[j]−prefixSum[i−1]
-  // 因此K值：
-  // prefixSum[j]−prefixSum[i−1]==k
-  // 前缀和为0出现1次
+var subarraySum = function(nums, k) {
   let hash = { 0: 1 };
+
   let prefixSum = 0;
-  // 次数
+
   let count = 0;
   for (let i = 0; i < nums.length; i++) {
     prefixSum += nums[i];
-
-    // 前缀和
     if (hash[prefixSum - k]) {
       count += hash[prefixSum - k];
     }
